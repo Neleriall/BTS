@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Page</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container" style="height: 100%;">
+      <div class="row justify-content-center my-auto">
+        <div class="col-md-6">
+          <h2 class="text-center">Регистрация</h2>
+          <form method="POST">
+            {% csrf_token %}
+            {% if error %}
+              <p style="color:red;">{{ error }}</p>
+            {% endif %}
+            <div class="form-group">
+              <label for="username">Имя пользователя</label>
+              <input type="text" class="form-control" id="username" name="username" placeholder="Введите имя пользователя" required />
+            </div>
+            <div class="form-group">
+              <label for="first_name">Имя</label>
+              <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Введите имя" required />
+            </div>
+            <div class="form-group">
+              <label for="last_name">Фамилия</label>
+              <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Введите фамилию" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="Введите email" required />
+            </div>
+            <div class="form-group">
+              <label for="password">Пароль</label>
+              <input type="password" class="form-control" id="password" name="password" placeholder="Введите пароль" required />
+            </div>
+            <div class="form-group">
+              <label for="confirm_password">Подтвердите пароль</label>
+              <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Подтвердите пароль" required />
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Зарегистрироваться</button>
+            <div class="col">
+              <p>
+                Уже есть аккаунт? <br />
+                <a href="{% url 'app:login' %}">Войти</a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

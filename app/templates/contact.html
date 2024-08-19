@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <section class="container my-5" style="background-color: #e0dede;">
+    <div class="row">
+      <aside class="col-12 col-md-4 order-1 order-md-1 mb-4 mb-md-0">
+        <div class="border py-4 px-5 fs-4" style="background-color: white;">
+          <a href="{% url 'app:contact' %}" class="text-decoration-none text-dark">Контакты</a>
+        </div>
+      </aside>
+      <div class="col-12 col-md-8 order-2 order-md-2" style="background-color: white;">
+        <h1 class="mb-4" style="font-weight: 700; letter-spacing: 2px; color: #1b3b8d;">{{ contact.title }}</h1>
+        <p class="mb-2">
+          <strong style="color: #ee6800;">Адрес:</strong> <br> {{ contact.address }}
+        </p>
+        <p class="mb-2">
+          <strong style="color: #ee6800;">Телефон:</strong> <br> {{ contact.tel }}
+        </p>
+        <p class="mb-4">
+          <strong style="color: #ee6800;">Почта:</strong> <br> {{ contact.email }}
+        </p>
+        <hr>
+        <div>
+          <h3 class="fs-1" style="font-weight: 700; letter-spacing: 2px; color: #1b3b8d;">Оставьте ваше сообщение</h3>
+          <p>Запишите свои вопросы и предложения, и наши менеджеры свяжутся с вами</p>
+          <form method="POST" class="p-4">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Отправить</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+
+{% block scripts %}
+<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+  <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+  <script src="{% static 'js/bootstrap.js' %}"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}

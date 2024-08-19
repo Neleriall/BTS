@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="container my-5">
+    <div class="row">
+      <aside class="col-12 col-md-4 order-1 order-md-1 mb-4 mb-md-0">
+        <div class="px-5 py-4 border fs-4" style="background-color: white;">
+          <a href="{% url 'app:profile' user.username %}" class="text-decoration-none text-black">Профиль</a>
+        </div>
+        <div class="p-4 px-5 border fs-4" style="background-color: white;">
+          <a href="{% url 'app:profileform' %}" class="text-decoration-none text-black">Онлайн заявка</a>
+        </div>
+        <div class="px-5 py-4 border fs-4" style="background-color: white;">
+          <a href="{% url 'app:logout' %}" class="text-decoration-none text-black">Выйти</a>
+        </div>
+      </aside>
+      <div class="col-12 col-md-8 order-1 order-md-2">
+        <div class="d-flex flex-column">
+          <div>
+            <p><b>Имя:</b>{{ application.sender_name }} - {{ application.receiver_name }}</p>
+          </div>
+          <div>
+            <p><b>Адресс:</b>{{ application.sender_address }} - {{ application.receiver_address }}</p>
+          </div>
+          <div>
+            <p><b>Номер:</b>{{ application.sender_number }} - {{ application.receiver_number }}</p>
+          </div>
+          <div>
+            <p><b>Вес Груза:</b>{{ application.weight }} кг</p>
+          </div>
+          <div>
+            <p><b>Тип Услуги:</b>{{ application.type }} доставка</p>
+          </div>
+          <div>
+            <p><b>Товар:</b>{{ application.status }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+  <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+  <script src="{% static 'js/bootstrap.js' %}"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}
