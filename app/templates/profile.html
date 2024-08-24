@@ -24,11 +24,32 @@
         </div>
         <h2>Мои заявки</h2>
         <div class="d-flex flex-column">
-          {% for request in requests %}
-            <a class="text-decoration-none text-black fs-4" href="{% url 'app:applicationDetail' request.id %}">Заказ №: {{ request.id }}</a>
-          {% empty %}
-            <li>Нет заявок</li>
-          {% endfor %}
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Номер заявки</th>
+                <th scope="col">ID заявки</th>
+                <th scope="col">Имя заказчика</th>
+                <th scope="col">Адрес доставки</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for request in requests %}
+                <tr>
+                  <td>{{ forloop.counter }}</td>
+                  <td>
+                    <a class="text-decoration-none text-black fs-4" href="{% url 'app:applicationDetail' request.id %}">{{ request.id }}</a>
+                  </td>
+                  <td>{{ request.customer_name }}</td> 
+                  <td>{{ request.delivery_address }}</td> 
+                </tr>
+              {% empty %}
+                <tr>
+                  <td colspan="4">Нет заявок</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
